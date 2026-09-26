@@ -9,7 +9,9 @@ struct StudyView: View {
   var body: some View {
     NavigationStack {
       VStack(spacing: 16) {
-        DailyProgressHeader(known: session.knownCount, total: session.words.count)
+        if !isSheet {
+          DailyProgressHeader(known: session.knownCount, total: session.words.count)
+        }
         if let card = session.current {
           if horizontalSizeClass == .regular {
             SpreadView(card: card)
@@ -25,9 +27,18 @@ struct StudyView: View {
             .transition(.blurReplace)
         }
       }
-      .padding(.horizontal, 16)
-      .padding(.top, 6)
-      .padding(.bottom, 16)
+      .padding(.horizontal, isSheet ? 0 : 16)
+      .padding(.top, isSheet ? 0 : 6)
+      .padding(.bottom, isSheet ? 0 : 16)
+      .overlay(alignment: .bottomLeading) {
+        // Printed in the corner of the sheet, where a printer puts the color bar.
+        if isSheet {
+          DailyProgressHeader(known: session.knownCount, total: session.words.count)
+            .padding(.leading, 36)
+            .padding(.bottom, 6)
+            .allowsHitTesting(false)
+        }
+      }
       .background {
         CanvasBackground(seed: session.current?.id ?? 0)
       }
@@ -46,6 +57,11 @@ struct StudyView: View {
       .sensoryFeedback(.selection, trigger: isCurrentStarred.wrappedValue)
     }
     .tint(style.accent)
+  }
+
+  /// The screen is the sheet: no margins around the pages, and the progress printed in its corner.
+  private var isSheet: Bool {
+    style.surface == .paper
   }
 
   /// The ★ in the vertical bar: a starred card goes back into the deck instead of counting as known.

@@ -5,6 +5,11 @@ import SwiftUI
 struct CoverDeck: View {
   @Environment(StudySession.self) private var session
   @Environment(\.accessibilityReduceMotion) private var reduceMotion
+  @Environment(\.cardStyle) private var style
+
+  private var isSheet: Bool {
+    style.surface == .paper
+  }
 
   var body: some View {
     ZStack {
@@ -13,9 +18,10 @@ struct CoverDeck: View {
         CoverCard(word: card.word, seed: card.id, isRevealed: isTop && session.isRevealed, action: tapTopCard)
           .disabled(!isTop)
           .accessibilityHidden(!isTop)
-          .scaleEffect(isTop ? 1 : 0.94)
+          // Sheets of paper lie flat in a stack; cards sit back a little beneath the top one.
+          .scaleEffect(isTop || isSheet ? 1 : 0.94)
           // Glass is translucent, so the card beneath stays hidden until it's dealt.
-          .opacity(isTop ? 1 : 0)
+          .opacity(isTop || isSheet ? 1 : 0)
           // Earlier cards sit higher, so a card being dealt away stays above the one beneath it.
           .zIndex(-Double(card.id))
           .transition(DealOffTransition(reduceMotion: reduceMotion))

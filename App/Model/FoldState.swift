@@ -20,6 +20,11 @@ struct FoldState: Equatable {
     return min(max((angle.degrees - 25) / 65, 0), 1)
   }
 
+  /// How sharply the display bends at the fold, from 0 lying flat to 1 at a right angle.
+  var foldDepth: Double {
+    guard let angle, posture != .fullyOpen else { return 0 }
+    return min(max((180 - angle.degrees) / 90, 0), 1)
+  }
 
   #if DEBUG
   /// A fixed pose for screenshots, from the `-hingeAngle` launch argument, in place of the hinge.
