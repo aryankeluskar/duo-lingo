@@ -9,12 +9,18 @@ struct DeckCompleteContent: View {
 
   var body: some View {
     VStack(spacing: 12) {
-      Image(systemName: "checkmark.circle.fill")
-        .font(.system(size: 52))
-        .foregroundStyle(style.accent)
-        .symbolEffect(.bounce, value: session.knownCount)
-        .padding(.bottom, 4)
-        .accessibilityHidden(true)
+      if style.surface == .paper {
+        RisoCrane()
+          .frame(width: 200, height: 130)
+          .padding(.bottom, 8)
+      } else {
+        Image(systemName: "checkmark.circle.fill")
+          .font(.system(size: 52))
+          .foregroundStyle(style.accent)
+          .symbolEffect(.bounce, value: session.knownCount)
+          .padding(.bottom, 4)
+          .accessibilityHidden(true)
+      }
       Text("All \(session.words.count) words, done")
         .font(.system(size: titleSize, weight: style.wordWeight, design: style.wordDesign))
         .foregroundStyle(style.ink)

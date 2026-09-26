@@ -29,6 +29,12 @@ struct CardStyle {
   var inkTertiary: Color = Color(.tertiaryLabel)
   var track: Color = Color(.quaternaryLabel)
   var accent: Color
+  /// A second ink printed a hair out of register beneath the word.
+  var underprint: Color? = nil
+  /// The ink for the note under the word, in place of the secondary ink.
+  var noteInk: Color? = nil
+  /// The ink for the example's translation, in place of the secondary ink.
+  var translationInk: Color? = nil
   var wordDesign: Font.Design = .default
   var wordWeight: Font.Weight = .bold
   var meaningDesign: Font.Design = .default
@@ -46,6 +52,11 @@ struct CardStyle {
   var cornerRadius: CGFloat = 34
   /// The sheet lists sit on in place of the grouped background, and their rows.
   var listPaper: (sheet: Color, row: Color)? = nil
+
+  /// Whether the look is a print, with its type and marks laid down as ink.
+  var isPrint: Bool {
+    surface == .paper
+  }
 
   /// The opaque color behind a card that has no surface of its own.
   var solidCanvas: Color {
@@ -71,15 +82,19 @@ extension CardStyle {
     accent: coral
   )
 
-  /// Riso: a sheet of cream paper printed in halftone ink, on a warm table. New York for the words.
+  /// Riso: the screen is a sheet of cream stock printed in navy, with vermilion, teal, and
+  /// mustard as spot inks. New York for the words.
   static let riso = CardStyle(
     canvas: .riso,
     surface: .paper,
-    ink: Color(red: 0.13, green: 0.12, blue: 0.14),
-    inkSecondary: Color(red: 0.36, green: 0.34, blue: 0.36),
-    inkTertiary: Color(red: 0.55, green: 0.52, blue: 0.50),
-    track: Color(red: 0.17, green: 0.24, blue: 0.42).opacity(0.14),
-    accent: RisoInk.coral,
+    ink: RisoInk.navy,
+    inkSecondary: RisoInk.navy.opacity(0.72),
+    inkTertiary: RisoInk.navy.opacity(0.45),
+    track: RisoInk.navy.opacity(0.14),
+    accent: RisoInk.vermilion,
+    underprint: RisoInk.vermilion,
+    noteInk: RisoInk.vermilion,
+    translationInk: RisoInk.teal,
     wordDesign: .serif,
     wordWeight: .heavy,
     meaningDesign: .serif,
@@ -89,8 +104,8 @@ extension CardStyle {
     glassTint: RisoInk.paper.opacity(0.55),
     glassIsClear: true,
     usesSwatches: true,
-    cornerRadius: 12,
-    listPaper: (RisoInk.paper, Color.white.opacity(0.5))
+    cornerRadius: 0,
+    listPaper: (RisoInk.paper, Color.white.opacity(0.45))
   )
 
   /// Card: one white card on the grouped background, rounded type.
@@ -102,21 +117,19 @@ extension CardStyle {
   )
 }
 
-/// The inks of the riso print.
+/// The stock and inks of the riso print, sampled from a riso-style illustration.
 enum RisoInk {
-  static let paper = Color(red: 0.953, green: 0.918, blue: 0.863)
-  /// The sheet the words are printed on.
-  static let sheet = Color(red: 0.965, green: 0.937, blue: 0.886)
-  /// The table the sheet lies on.
-  static let table = Color(red: 0.89, green: 0.855, blue: 0.80)
+  /// The sheet: uncoated cream stock.
+  static let paper = Color(red: 0.949, green: 0.922, blue: 0.859)
+  /// The main ink, a deep federal blue. All type is printed in it.
+  static let navy = Color(red: 0.204, green: 0.267, blue: 0.424)
+  static let vermilion = Color(red: 0.886, green: 0.345, blue: 0.231)
+  static let teal = Color(red: 0.016, green: 0.518, blue: 0.486)
+  static let mustard = Color(red: 0.949, green: 0.769, blue: 0.263)
+  static let pink = Color(red: 0.925, green: 0.584, blue: 0.635)
   /// The warm brown of a shadow cast on paper.
   static let shade = Color(red: 0.32, green: 0.22, blue: 0.12)
-  static let coral = Color(red: 0.894, green: 0.376, blue: 0.294)
-  static let teal = Color(red: 0.12, green: 0.54, blue: 0.50)
-  static let mustard = Color(red: 0.95, green: 0.745, blue: 0.27)
-  static let navy = Color(red: 0.17, green: 0.24, blue: 0.42)
-  static let pink = Color(red: 0.94, green: 0.60, blue: 0.69)
-  static let all = [coral, teal, mustard, navy, pink]
+  static let all = [navy, vermilion, teal, mustard, pink]
 }
 
 extension EnvironmentValues {

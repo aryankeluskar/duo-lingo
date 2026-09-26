@@ -49,13 +49,21 @@ struct AnswerContent: View {
       Text(word.exampleTranslation)
         .font(.system(size: translationSize, design: style.bodyDesign))
         .italic(style.bodyDesign == .serif)
-        .foregroundStyle(style.inkSecondary)
+        .foregroundStyle(style.translationInk ?? style.inkSecondary)
         .lineSpacing(2)
         .fixedSize(horizontal: false, vertical: true)
         .padding(.top, 6)
         .inkDevelop(progress, line: 2)
     }
     .frame(maxWidth: .infinity, alignment: .leading)
+    .risoInk(style.isPrint, seed: 5)
+    .background(alignment: .leading) {
+      if style.isPrint {
+        LightPool(brightness: progress)
+          .frame(width: meaningSize * 11, height: meaningSize * 8)
+          .offset(x: -meaningSize * 2.2)
+      }
+    }
     .onChange(of: isRevealed, initial: true) { _, revealed in
       withAnimation(revealed ? .smooth(duration: 0.8) : .smooth(duration: 0.25)) {
         timedProgress = revealed ? 1 : 0
