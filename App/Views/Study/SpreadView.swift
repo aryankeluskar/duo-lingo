@@ -158,10 +158,10 @@ private struct Spine: View {
       LinearGradient(
         stops: [
           .init(color: style.creaseShadow.opacity(0), location: 0),
-          .init(color: style.creaseShadow.opacity(0.35), location: 0.3),
-          .init(color: style.creaseShadow, location: 0.49),
+          .init(color: style.creaseShadow.opacity(0.3), location: 0.28),
+          .init(color: style.creaseShadow, location: 0.47),
           .init(color: style.creaseHighlight, location: 0.54),
-          .init(color: style.creaseShadow.opacity(0.2), location: 0.64),
+          .init(color: style.creaseShadow.opacity(0.12), location: 0.64),
           .init(color: style.creaseShadow.opacity(0), location: 1),
         ],
         startPoint: isVertical ? .leading : .top,

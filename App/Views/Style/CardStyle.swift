@@ -60,7 +60,7 @@ extension CardStyle {
     rule: Color(red: 0.45, green: 0.37, blue: 0.25).opacity(0.24),
     accent: Color(red: 0.76, green: 0.25, blue: 0.17),
     creaseShadow: Color(red: 0.30, green: 0.22, blue: 0.10).opacity(0.14),
-    creaseHighlight: .white.opacity(0.7),
+    creaseHighlight: .white.opacity(0.45),
     showsSpineRule: false,
     word: Typeface(name: "HiraMinProN-W6"),
     meaning: Typeface(weight: .semibold, design: .serif),
