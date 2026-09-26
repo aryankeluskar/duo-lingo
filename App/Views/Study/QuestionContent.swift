@@ -12,7 +12,7 @@ struct QuestionContent: View {
   var body: some View {
     VStack(spacing: 12) {
       Text(word.spokenTerm)
-        .font(.system(size: wordSize, weight: .bold, design: style.wordDesign))
+        .font(.system(size: wordSize, weight: style.wordWeight, design: style.wordDesign))
         .tracking(-wordSize * 0.012)
         .foregroundStyle(style.ink)
         .typesettingLanguage(word.deck.language)
@@ -23,7 +23,9 @@ struct QuestionContent: View {
         // of the glyphs, not the baselines, to read as one line with the meaning.
         .alignmentGuide(.horizon) { $0[.lastTextBaseline] + (word.deck.usesIdeographs ? wordSize * 0.07 : 0) }
       Text(word.spokenNote)
-        .font(.system(size: noteSize, weight: .medium))
+        .font(.system(size: style.noteDesign == .monospaced ? noteSize * 0.78 : noteSize, weight: .medium, design: style.noteDesign))
+        .textCase(style.noteDesign == .monospaced ? .uppercase : nil)
+        .tracking(style.noteDesign == .monospaced ? 1.4 : 0)
         .foregroundStyle(style.inkSecondary)
         .typesettingLanguage(word.deck.language)
     }

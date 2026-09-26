@@ -27,7 +27,7 @@ struct SpreadView: View {
         }
       }
       .background {
-        Surface()
+        Surface(seed: card.id)
       }
       .contentShape(.rect(cornerRadius: style.cornerRadius, style: .continuous))
     }
@@ -54,7 +54,8 @@ struct SpreadView: View {
         .id(card.id)
         .transition(.blurReplace)
       Text("Fold, recall, unfold.")
-        .font(.system(size: 17, weight: .medium))
+        .font(.system(size: 19, design: style.bodyDesign))
+        .italic(style.bodyDesign == .serif)
         .foregroundStyle(style.inkTertiary)
         .alignmentGuide(.horizon) { $0[.lastTextBaseline] }
         .opacity(session.isRevealed ? 0 : 1)

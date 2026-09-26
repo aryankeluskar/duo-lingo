@@ -10,7 +10,7 @@ struct CoverDeck: View {
     ZStack {
       ForEach(Array(session.queue.prefix(2).enumerated()), id: \.element.id) { index, card in
         let isTop = index == 0
-        CoverCard(word: card.word, isRevealed: isTop && session.isRevealed, action: tapTopCard)
+        CoverCard(word: card.word, seed: card.id, isRevealed: isTop && session.isRevealed, action: tapTopCard)
           .disabled(!isTop)
           .accessibilityHidden(!isTop)
           .scaleEffect(isTop ? 1 : 0.94)
@@ -45,6 +45,7 @@ struct CoverDeck: View {
 /// A single card: the word, which gives way to the answer once revealed.
 private struct CoverCard: View {
   var word: Word
+  var seed: Int
   var isRevealed: Bool
   var action: () -> Void
 
@@ -63,7 +64,7 @@ private struct CoverCard: View {
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
       .background {
-        Surface(isOpaque: true)
+        Surface(isOpaque: true, seed: seed)
       }
       .contentShape(.rect(cornerRadius: style.cornerRadius, style: .continuous))
     }

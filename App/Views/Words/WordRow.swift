@@ -16,12 +16,14 @@ struct WordRow: View {
             .font(.system(size: 22, weight: .semibold, design: style.wordDesign))
             .typesettingLanguage(word.deck.language)
           Text(word.spokenNote)
-            .font(.subheadline)
+            .font(style.noteDesign == .monospaced ? .system(size: 11, weight: .medium, design: .monospaced) : .subheadline)
+            .textCase(style.noteDesign == .monospaced ? .uppercase : nil)
+            .tracking(style.noteDesign == .monospaced ? 1.2 : 0)
             .foregroundStyle(.secondary)
             .typesettingLanguage(word.deck.language)
         }
         Text(word.meaning)
-          .font(.system(size: 15))
+          .font(.system(size: 16, design: style.bodyDesign))
           .foregroundStyle(.secondary)
       }
       Spacer(minLength: 0)

@@ -39,6 +39,7 @@ struct StudyView: View {
           .toggleStyle(.button)
           .disabled(session.current == nil)
         }
+        .sharedBackgroundVisibility(style.surface == .paper ? .hidden : .automatic)
       }
       .toolbarTitleDisplayMode(.inline)
       .sensoryFeedback(.impact(weight: .light), trigger: session.revealCount)

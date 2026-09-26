@@ -4,6 +4,7 @@ import SwiftUI
 enum CardLook: String {
   case keynote
   case glass
+  case riso
   case card
 
   static var current: CardLook {
@@ -12,13 +13,14 @@ enum CardLook: String {
       return look
     }
     #endif
-    return .glass
+    return .riso
   }
 
   func style(for colorScheme: ColorScheme) -> CardStyle {
     switch self {
     case .keynote: .keynote
     case .glass: .glass
+    case .riso: .riso
     case .card: .card
     }
   }

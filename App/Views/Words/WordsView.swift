@@ -4,6 +4,7 @@ import SwiftUI
 /// deck until you clear it.
 struct WordsView: View {
   @Environment(StudySession.self) private var session
+  @Environment(\.cardStyle) private var style
 
   var body: some View {
     NavigationStack {
@@ -21,11 +22,14 @@ struct WordsView: View {
         Section {
           ForEach(session.words) { word in
             WordRow(word: word)
+              .listRowBackground(style.listPaper?.row)
           }
         } footer: {
           Text("Starred words come back for another look until you clear the star.")
         }
       }
+      .scrollContentBackground(style.listPaper == nil ? .automatic : .hidden)
+      .background(style.listPaper?.sheet ?? .clear)
       .navigationTitle(Text(session.deck.name))
       .toolbarTitleDisplayMode(.inlineLarge)
     }

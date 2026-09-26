@@ -16,21 +16,30 @@ struct DeckCompleteContent: View {
         .padding(.bottom, 4)
         .accessibilityHidden(true)
       Text("All \(session.words.count) words, done")
-        .font(.system(size: titleSize, weight: .bold))
+        .font(.system(size: titleSize, weight: style.wordWeight, design: style.wordDesign))
         .foregroundStyle(style.ink)
       Text("Come back tomorrow, or go through the deck again.")
         .font(.system(size: bodySize))
         .foregroundStyle(style.inkSecondary)
-      Button("Study Again", systemImage: "arrow.counterclockwise") {
-        withAnimation(.smooth) {
-          session.startOver()
+      Group {
+        if style.surface == .paper {
+          studyAgain.buttonStyle(.borderedProminent)
+        } else {
+          studyAgain.buttonStyle(.glass)
         }
       }
-      .buttonStyle(.glass)
       .controlSize(.large)
       .padding(.top, 12)
     }
     .multilineTextAlignment(.center)
     .padding(32)
+  }
+
+  private var studyAgain: some View {
+    Button("Study Again", systemImage: "arrow.counterclockwise") {
+      withAnimation(.smooth) {
+        session.startOver()
+      }
+    }
   }
 }
