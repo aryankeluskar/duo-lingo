@@ -92,10 +92,11 @@ final class StudySession {
     }
   }
 
-  func updateFold(_ state: FoldState) {
+  /// Reveals on unfold and puts the card away on fold, but only while the deck is on screen.
+  func updateFold(_ state: FoldState, isStudying: Bool) {
     let previous = fold.posture
     fold = state
-    guard let posture = state.posture, let previous, posture != previous else { return }
+    guard isStudying, let posture = state.posture, let previous, posture != previous else { return }
     if posture == .closed {
       if phase == .revealed {
         isDealPending = true
