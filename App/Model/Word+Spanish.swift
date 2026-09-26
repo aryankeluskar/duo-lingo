@@ -105,62 +105,6 @@ extension Word {
       meaning: "weather; time",
       example: "Hoy hace muy buen tiempo.",
       exampleTranslation: "The weather is really nice today."
-    ),
-    Word(
-      deck: .spanish,
-      term: "tranquilo",
-      note: "adjetivo",
-      meaning: "calm, quiet",
-      example: "Es un barrio muy tranquilo.",
-      exampleTranslation: "It’s a very quiet neighborhood."
-    ),
-    Word(
-      deck: .spanish,
-      term: "pasear",
-      note: "verbo",
-      meaning: "to go for a walk",
-      example: "Paseamos por el parque después de cenar.",
-      exampleTranslation: "We walk in the park after dinner."
-    ),
-    Word(
-      deck: .spanish,
-      term: "la biblioteca",
-      note: "sustantivo · f.",
-      meaning: "library",
-      example: "Estudio en la biblioteca los sábados.",
-      exampleTranslation: "I study at the library on Saturdays."
-    ),
-    Word(
-      deck: .spanish,
-      term: "empezar",
-      note: "verbo",
-      meaning: "to begin",
-      example: "La película empieza a las ocho.",
-      exampleTranslation: "The movie starts at eight."
-    ),
-    Word(
-      deck: .spanish,
-      term: "el paisaje",
-      note: "sustantivo · m.",
-      meaning: "landscape",
-      example: "Desde aquí, el paisaje es precioso.",
-      exampleTranslation: "The view from here is beautiful."
-    ),
-    Word(
-      deck: .spanish,
-      term: "cansado",
-      note: "adjetivo",
-      meaning: "tired",
-      example: "Estoy cansado después de tanto trabajo.",
-      exampleTranslation: "I’m tired after so much work."
-    ),
-    Word(
-      deck: .spanish,
-      term: "la promesa",
-      note: "sustantivo · f.",
-      meaning: "promise",
-      example: "Siempre cumple sus promesas.",
-      exampleTranslation: "She always keeps her promises."
-    ),
+    )
   ]
 }

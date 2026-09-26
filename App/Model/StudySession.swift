@@ -31,6 +31,12 @@ final class StudySession {
   private var nextCardID = 0
   private var knownDay: String
   private let defaults: UserDefaults
+  #if DEBUG
+  /// Set while a `-hingeAngle` pose stands in for the hinge. The pose holds only until the
+  /// hinge really moves, so an app launched for a screenshot still folds and unfolds.
+  private var isPosePinned = false
+  private var pinnedHingePosture: FoldState.Posture?
+  #endif
 
   init(defaults: UserDefaults = .standard) {
     self.defaults = defaults
@@ -48,6 +54,7 @@ final class StudySession {
     }
     if let pose = FoldState.debugPose {
       fold = pose
+      isPosePinned = true
     }
     #endif
   }
@@ -100,7 +107,15 @@ final class StudySession {
   /// Reveals on unfold and puts the card away on fold, but only while the deck is on screen.
   func updateFold(_ state: FoldState, isStudying: Bool) {
     #if DEBUG
-    if FoldState.debugPose != nil { return }
+    if isPosePinned {
+      // The first report is the hinge as it lay at launch; any other posture means it moved.
+      guard let hinge = pinnedHingePosture else {
+        pinnedHingePosture = state.posture
+        return
+      }
+      if state.posture == hinge { return }
+      isPosePinned = false
+    }
     #endif
     let previous = fold.posture
     fold = state
@@ -120,6 +135,13 @@ final class StudySession {
     guard newDeck != deck else { return }
     deck = newDeck
     defaults.set(newDeck.rawValue, forKey: Keys.deck)
+    rebuildQueue()
+  }
+
+  /// Opens a deck just made from a link, from its first card, even if the last one was open.
+  func studyWebDeck() {
+    deck = .web
+    defaults.set(Deck.web.rawValue, forKey: Keys.deck)
     rebuildQueue()
   }
 

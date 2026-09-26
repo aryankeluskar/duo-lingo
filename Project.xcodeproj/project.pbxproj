@@ -7,29 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0247865A3D2299669825AA41 /* LightPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC6001B05C1FFE88696C85C /* LightPool.swift */; };
+		0AF0CE7369E8FB2B438E5752 /* CardMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C17DF10AB7BE85330794F /* CardMaker.swift */; };
 		0D4CDE360916680D2D126A60 /* StudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3342D6ED700B7AD115568C /* StudyView.swift */; };
 		121D238D3741BF166AA0B934 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F16C0358BDBE96493C540D /* ContentView.swift */; };
 		2274FC6F4E66D538B91F37B2 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42592389E49FE37B6276644B /* Deck.swift */; };
 		264DF8F89059BEE4FD4F0926 /* QuestionContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0305EB04C256CA7AF926CD71 /* QuestionContent.swift */; };
 		27E40C579B7EB3960B929B52 /* WordRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5199B98FDB72F272BE59AAF6 /* WordRow.swift */; };
 		35F47D230AE00429733D0212 /* CardLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE4A13A5B398B7A7014FB3 /* CardLook.swift */; };
+		38D307197BA9D0F5F8D4F6AB /* RisoCrane.swift in Sources */ = {isa = PBXBuildFile; fileRef = E229F31F2C26D011B649D74A /* RisoCrane.swift */; };
 		3C244836F993D96CD437A89C /* SpreadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7A51F10712056D8178633C /* SpreadView.swift */; };
 		4002E4BEF91ADC474753020E /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A23FE9033D40D51F8D6E6CC /* App.swift */; };
 		44A0B1576D4A66EDD4FCC841 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFEE528E01768A00054BE9 /* Word.swift */; };
+		4A345CED79F715F3C2D45F34 /* Word+LinearAlgebra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B145F042B02913599CCD568 /* Word+LinearAlgebra.swift */; };
 		53BD32F6AA7714066EAA00D1 /* HingeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28229654BAE156DE4D6BBB72 /* HingeLog.swift */; };
+		5BF0EB39C1EC203467E46880 /* PrintedInk.swift in Sources */ = {isa = PBXBuildFile; fileRef = A935E33938A3CD4588F6E99B /* PrintedInk.swift */; };
 		6355F1233C35166AF05303CE /* PaperSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CABCF6FFE1ADC3F849E6762 /* PaperSurface.swift */; };
 		6C129860DD861B5290A0BD30 /* Word+Spanish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028930CACF84B173CF9E0963 /* Word+Spanish.swift */; };
+		796332CF43744653A43064A0 /* WebDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7852F924E46092CA36539845 /* WebDeck.swift */; };
+		79B5286C018314A1FCA7102B /* RisoPress.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F5FE7AA134066AC945BDE /* RisoPress.swift */; };
 		8257E377B1C402C58F596D6B /* InkDevelop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120685619BEA7FDE283AE55B /* InkDevelop.swift */; };
 		82DCB549A9BB9080B27F284E /* AnswerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41551F09CD57848B0DB1C06E /* AnswerContent.swift */; };
+		962D9BDAF651DC977B7506E8 /* Word+Calculus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44648C6419F04D5A4EFA236A /* Word+Calculus.swift */; };
 		98AB14D53BFABF0B47C36CB6 /* FoldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8272E02F222AA66F29D237B /* FoldState.swift */; };
+		99BD6A3C7B68FE2CF420B416 /* MakeDeckSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF565A61353AB3F12AA8FD0B /* MakeDeckSheet.swift */; };
+		A592D9B74CC20159AAB43DEF /* Word+Chemistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412A96EA3DFCDA7511BEBAD4 /* Word+Chemistry.swift */; };
 		A659A97EFE6FE5E90B0D88B4 /* WordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DC6A842CFAF5B13D919639 /* WordsView.swift */; };
 		B0196BC3960D984024C9A9FC /* Word+Japanese.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC451701316EDD70F66BB53E /* Word+Japanese.swift */; };
 		B0CC903FC3B0BB94AC58B284 /* CoverDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C640E07D625F1C2196D578 /* CoverDeck.swift */; };
+		B146A65C2C60D0BEAFA73978 /* Word+Biology.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A74C56814704FE65FFCB6 /* Word+Biology.swift */; };
 		B59B94C85C9DC4AF870CDA03 /* StudySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378B10EB7455FA673C783830 /* StudySession.swift */; };
 		B877EAC81FF5D148EDC620FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3797E591F302ECC0AA2FC607 /* Assets.xcassets */; };
 		BB5FF0AB17D7F458B25FFEF9 /* HorizonAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1B4276F8D3EFACCD25B460 /* HorizonAlignment.swift */; };
 		C01EF7716A3854016F3C57ED /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444B69DB5DECED43F50B1053 /* AppTab.swift */; };
+		C92ADB1EBD11C8B60F29CA6A /* Word+Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B68BA004E69782B32B77C3 /* Word+Physics.swift */; };
 		D30D908C5512C96FE9E6E16A /* HingeTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723FC86DC74C885DB5993F5C /* HingeTracking.swift */; };
+		D7223A37E2F31B139A849ABD /* Riso.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4C9CCD17670E36F6359E4CC7 /* Riso.metal */; };
 		D7D73AD6EF00E91000A9AA6D /* CardPressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F530F5A919A55909CF9D0B7 /* CardPressStyle.swift */; };
 		D8BE9E1DC84BF70488EBFA62 /* DailyProgressHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD5240479207609FFCEEBA8 /* DailyProgressHeader.swift */; };
 		E511DB01629E4FCC235918FF /* DeckCompleteContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEE8650868118010A00F716 /* DeckCompleteContent.swift */; };
@@ -41,6 +54,8 @@
 		0305EB04C256CA7AF926CD71 /* QuestionContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionContent.swift; sourceTree = "<group>"; };
 		120685619BEA7FDE283AE55B /* InkDevelop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InkDevelop.swift; sourceTree = "<group>"; };
 		18CE4A13A5B398B7A7014FB3 /* CardLook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardLook.swift; sourceTree = "<group>"; };
+		1AC6001B05C1FFE88696C85C /* LightPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightPool.swift; sourceTree = "<group>"; };
+		1B145F042B02913599CCD568 /* Word+LinearAlgebra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+LinearAlgebra.swift"; sourceTree = "<group>"; };
 		28229654BAE156DE4D6BBB72 /* HingeLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HingeLog.swift; sourceTree = "<group>"; };
 		2A3342D6ED700B7AD115568C /* StudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyView.swift; sourceTree = "<group>"; };
 		2E7A51F10712056D8178633C /* SpreadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadView.swift; sourceTree = "<group>"; };
@@ -48,23 +63,34 @@
 		3797E591F302ECC0AA2FC607 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3CABCF6FFE1ADC3F849E6762 /* PaperSurface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperSurface.swift; sourceTree = "<group>"; };
 		3F1B4276F8D3EFACCD25B460 /* HorizonAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizonAlignment.swift; sourceTree = "<group>"; };
+		412A96EA3DFCDA7511BEBAD4 /* Word+Chemistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+Chemistry.swift"; sourceTree = "<group>"; };
 		41551F09CD57848B0DB1C06E /* AnswerContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerContent.swift; sourceTree = "<group>"; };
 		42592389E49FE37B6276644B /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		444B69DB5DECED43F50B1053 /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
+		44648C6419F04D5A4EFA236A /* Word+Calculus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+Calculus.swift"; sourceTree = "<group>"; };
+		4C9CCD17670E36F6359E4CC7 /* Riso.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Riso.metal; sourceTree = "<group>"; };
 		5199B98FDB72F272BE59AAF6 /* WordRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRow.swift; sourceTree = "<group>"; };
 		5A23FE9033D40D51F8D6E6CC /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		5CD5240479207609FFCEEBA8 /* DailyProgressHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyProgressHeader.swift; sourceTree = "<group>"; };
 		723FC86DC74C885DB5993F5C /* HingeTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HingeTracking.swift; sourceTree = "<group>"; };
 		74F16C0358BDBE96493C540D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		77684732E43752EBBBF9B185 /* CardStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStyle.swift; sourceTree = "<group>"; };
+		7852F924E46092CA36539845 /* WebDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebDeck.swift; sourceTree = "<group>"; };
+		848A74C56814704FE65FFCB6 /* Word+Biology.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+Biology.swift"; sourceTree = "<group>"; };
 		9F530F5A919A55909CF9D0B7 /* CardPressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPressStyle.swift; sourceTree = "<group>"; };
 		A7F4E94584E1AFCC3005ADBB /* duo-lingo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "duo-lingo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A935E33938A3CD4588F6E99B /* PrintedInk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintedInk.swift; sourceTree = "<group>"; };
 		AC451701316EDD70F66BB53E /* Word+Japanese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+Japanese.swift"; sourceTree = "<group>"; };
 		B6DC6A842CFAF5B13D919639 /* WordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsView.swift; sourceTree = "<group>"; };
+		BF565A61353AB3F12AA8FD0B /* MakeDeckSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeDeckSheet.swift; sourceTree = "<group>"; };
 		BFFFEE528E01768A00054BE9 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		C31C17DF10AB7BE85330794F /* CardMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMaker.swift; sourceTree = "<group>"; };
 		C9DDE1B06BCC1CDE0ECF1589 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D8C640E07D625F1C2196D578 /* CoverDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverDeck.swift; sourceTree = "<group>"; };
 		DBEE8650868118010A00F716 /* DeckCompleteContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCompleteContent.swift; sourceTree = "<group>"; };
+		E229F31F2C26D011B649D74A /* RisoCrane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RisoCrane.swift; sourceTree = "<group>"; };
+		E7B68BA004E69782B32B77C3 /* Word+Physics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+Physics.swift"; sourceTree = "<group>"; };
+		EA4F5FE7AA134066AC945BDE /* RisoPress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RisoPress.swift; sourceTree = "<group>"; };
 		F8272E02F222AA66F29D237B /* FoldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,12 +98,19 @@
 		1522D921D76FD87D77AABDE6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C31C17DF10AB7BE85330794F /* CardMaker.swift */,
 				42592389E49FE37B6276644B /* Deck.swift */,
 				F8272E02F222AA66F29D237B /* FoldState.swift */,
 				28229654BAE156DE4D6BBB72 /* HingeLog.swift */,
 				378B10EB7455FA673C783830 /* StudySession.swift */,
+				7852F924E46092CA36539845 /* WebDeck.swift */,
 				BFFFEE528E01768A00054BE9 /* Word.swift */,
+				848A74C56814704FE65FFCB6 /* Word+Biology.swift */,
+				44648C6419F04D5A4EFA236A /* Word+Calculus.swift */,
+				412A96EA3DFCDA7511BEBAD4 /* Word+Chemistry.swift */,
 				AC451701316EDD70F66BB53E /* Word+Japanese.swift */,
+				1B145F042B02913599CCD568 /* Word+LinearAlgebra.swift */,
+				E7B68BA004E69782B32B77C3 /* Word+Physics.swift */,
 				028930CACF84B173CF9E0963 /* Word+Spanish.swift */,
 			);
 			path = Model;
@@ -109,6 +142,8 @@
 			children = (
 				18CE4A13A5B398B7A7014FB3 /* CardLook.swift */,
 				77684732E43752EBBBF9B185 /* CardStyle.swift */,
+				4C9CCD17670E36F6359E4CC7 /* Riso.metal */,
+				EA4F5FE7AA134066AC945BDE /* RisoPress.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -123,8 +158,11 @@
 				DBEE8650868118010A00F716 /* DeckCompleteContent.swift */,
 				3F1B4276F8D3EFACCD25B460 /* HorizonAlignment.swift */,
 				120685619BEA7FDE283AE55B /* InkDevelop.swift */,
+				1AC6001B05C1FFE88696C85C /* LightPool.swift */,
 				3CABCF6FFE1ADC3F849E6762 /* PaperSurface.swift */,
+				A935E33938A3CD4588F6E99B /* PrintedInk.swift */,
 				0305EB04C256CA7AF926CD71 /* QuestionContent.swift */,
+				E229F31F2C26D011B649D74A /* RisoCrane.swift */,
 				2E7A51F10712056D8178633C /* SpreadView.swift */,
 				2A3342D6ED700B7AD115568C /* StudyView.swift */,
 			);
@@ -142,6 +180,7 @@
 		564EAEE27C601E0E841CF149 /* Words */ = {
 			isa = PBXGroup;
 			children = (
+				BF565A61353AB3F12AA8FD0B /* MakeDeckSheet.swift */,
 				5199B98FDB72F272BE59AAF6 /* WordRow.swift */,
 				B6DC6A842CFAF5B13D919639 /* WordsView.swift */,
 			);
@@ -237,6 +276,7 @@
 				4002E4BEF91ADC474753020E /* App.swift in Sources */,
 				C01EF7716A3854016F3C57ED /* AppTab.swift in Sources */,
 				35F47D230AE00429733D0212 /* CardLook.swift in Sources */,
+				0AF0CE7369E8FB2B438E5752 /* CardMaker.swift in Sources */,
 				D7D73AD6EF00E91000A9AA6D /* CardPressStyle.swift in Sources */,
 				F84ECF73D82A8B8051DB5CE2 /* CardStyle.swift in Sources */,
 				121D238D3741BF166AA0B934 /* ContentView.swift in Sources */,
@@ -249,12 +289,24 @@
 				D30D908C5512C96FE9E6E16A /* HingeTracking.swift in Sources */,
 				BB5FF0AB17D7F458B25FFEF9 /* HorizonAlignment.swift in Sources */,
 				8257E377B1C402C58F596D6B /* InkDevelop.swift in Sources */,
+				0247865A3D2299669825AA41 /* LightPool.swift in Sources */,
+				99BD6A3C7B68FE2CF420B416 /* MakeDeckSheet.swift in Sources */,
 				6355F1233C35166AF05303CE /* PaperSurface.swift in Sources */,
+				5BF0EB39C1EC203467E46880 /* PrintedInk.swift in Sources */,
 				264DF8F89059BEE4FD4F0926 /* QuestionContent.swift in Sources */,
+				D7223A37E2F31B139A849ABD /* Riso.metal in Sources */,
+				38D307197BA9D0F5F8D4F6AB /* RisoCrane.swift in Sources */,
+				79B5286C018314A1FCA7102B /* RisoPress.swift in Sources */,
 				3C244836F993D96CD437A89C /* SpreadView.swift in Sources */,
 				B59B94C85C9DC4AF870CDA03 /* StudySession.swift in Sources */,
 				0D4CDE360916680D2D126A60 /* StudyView.swift in Sources */,
+				796332CF43744653A43064A0 /* WebDeck.swift in Sources */,
+				B146A65C2C60D0BEAFA73978 /* Word+Biology.swift in Sources */,
+				962D9BDAF651DC977B7506E8 /* Word+Calculus.swift in Sources */,
+				A592D9B74CC20159AAB43DEF /* Word+Chemistry.swift in Sources */,
 				B0196BC3960D984024C9A9FC /* Word+Japanese.swift in Sources */,
+				4A345CED79F715F3C2D45F34 /* Word+LinearAlgebra.swift in Sources */,
+				C92ADB1EBD11C8B60F29CA6A /* Word+Physics.swift in Sources */,
 				6C129860DD861B5290A0BD30 /* Word+Spanish.swift in Sources */,
 				44A0B1576D4A66EDD4FCC841 /* Word.swift in Sources */,
 				27E40C579B7EB3960B929B52 /* WordRow.swift in Sources */,

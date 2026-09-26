@@ -29,6 +29,18 @@ struct ContentView: View {
         session.updateFold(state, isStudying: selectedTab == .study)
       }
     )
+    #if DEBUG
+    .task {
+      if let link = UserDefaults.standard.string(forKey: "makeDeckFrom"), let url = URL(string: link) {
+        do {
+          WebDeck.shared.replace(with: try await CardMaker.makeDeck(from: url))
+          session.studyWebDeck()
+        } catch {
+          print("makeDeckFrom failed: \(error)")
+        }
+      }
+    }
+    #endif
     .onChange(of: scenePhase) { _, phase in
       if phase == .active {
         session.refreshDay()
