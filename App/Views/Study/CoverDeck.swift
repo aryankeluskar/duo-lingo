@@ -14,6 +14,8 @@ struct CoverDeck: View {
           .disabled(!isTop)
           .accessibilityHidden(!isTop)
           .scaleEffect(isTop ? 1 : 0.94)
+          // Glass is translucent, so the card beneath stays hidden until it's dealt.
+          .opacity(isTop ? 1 : 0)
           // Earlier cards sit higher, so a card being dealt away stays above the one beneath it.
           .zIndex(-Double(card.id))
           .transition(DealOffTransition(reduceMotion: reduceMotion))
