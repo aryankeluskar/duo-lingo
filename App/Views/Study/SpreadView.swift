@@ -14,7 +14,7 @@ struct SpreadView: View {
       GeometryReader { proxy in
         let spine = SpineLocation(proxy)
         PageSpreadLayout(spine: spine) {
-          Spine(axis: spine.axis, depth: session.fold.foldDepth)
+          Color.clear
           if spine.axis == .horizontal {
             // Side by side, both pages hang from one horizon line across the fold.
             let alignment = Alignment(horizontal: .center, vertical: .horizon)
@@ -26,9 +26,8 @@ struct SpreadView: View {
           }
         }
       }
-      .clipShape(.rect(cornerRadius: style.cornerRadius, style: .continuous))
       .background {
-        PaperSurface()
+        Surface()
       }
       .contentShape(.rect(cornerRadius: style.cornerRadius, style: .continuous))
     }
@@ -49,12 +48,19 @@ struct SpreadView: View {
       AnswerContent(
         word: card.word,
         isRevealed: session.isRevealed,
-        restingOpacity: 0.12,
         openingProgress: session.fold.openingProgress
       )
-        .padding(.horizontal, 40)
+        .padding(.horizontal, 52)
         .id(card.id)
         .transition(.blurReplace)
+      Text("Fold, recall, unfold.")
+        .font(.system(size: 17, weight: .medium))
+        .foregroundStyle(style.inkTertiary)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .opacity(session.isRevealed ? 0 : 1)
+        .blur(radius: session.isRevealed ? 6 : 0)
+        .animation(.smooth(duration: 0.3), value: session.isRevealed)
+        .accessibilityHidden(true)
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
   }
@@ -149,58 +155,5 @@ private struct PageSpreadLayout: Layout {
     for (subview, rect) in zip(subviews, [spineRect, first, second]) {
       subview.place(at: CGPoint(x: rect.midX, y: rect.midY), anchor: .center, proposal: ProposedViewSize(rect.size))
     }
-  }
-}
-
-/// The binding between the pages: a hairline, a soft crease, or both, depending on the style.
-/// The crease deepens as the display bends at the fold.
-private struct Spine: View {
-  var axis: Axis
-  /// How sharply the display bends, from 0 lying flat to 1 at a right angle.
-  var depth: Double
-
-  @Environment(\.cardStyle) private var style
-  @Environment(\.displayScale) private var displayScale
-
-  var body: some View {
-    let isVertical = axis == .horizontal
-    ZStack {
-      // The valley the pages fall into as they rise.
-      LinearGradient(
-        stops: [
-          .init(color: style.creaseShadow.opacity(0), location: 0),
-          .init(color: style.creaseShadow.opacity(0.5), location: 0.3),
-          .init(color: style.creaseShadow, location: 0.5),
-          .init(color: style.creaseShadow.opacity(0.5), location: 0.7),
-          .init(color: style.creaseShadow.opacity(0), location: 1),
-        ],
-        startPoint: isVertical ? .leading : .top,
-        endPoint: isVertical ? .trailing : .bottom
-      )
-      .frame(width: isVertical ? 150 : nil, height: isVertical ? nil : 150)
-      .opacity(depth)
-      LinearGradient(
-        stops: [
-          .init(color: style.creaseShadow.opacity(0), location: 0),
-          .init(color: style.creaseShadow.opacity(0.3), location: 0.28),
-          .init(color: style.creaseShadow, location: 0.47),
-          .init(color: style.creaseHighlight, location: 0.54),
-          .init(color: style.creaseShadow.opacity(0.12), location: 0.64),
-          .init(color: style.creaseShadow.opacity(0), location: 1),
-        ],
-        startPoint: isVertical ? .leading : .top,
-        endPoint: isVertical ? .trailing : .bottom
-      )
-      .frame(width: isVertical ? 84 : nil, height: isVertical ? nil : 84)
-      if style.showsSpineRule {
-        Rectangle()
-          .fill(style.rule)
-          .frame(width: isVertical ? 1 / displayScale : nil, height: isVertical ? nil : 1 / displayScale)
-          .padding(isVertical ? .vertical : .horizontal, 22)
-      }
-    }
-    .animation(.smooth(duration: 0.45), value: depth)
-    .allowsHitTesting(false)
-    .accessibilityHidden(true)
   }
 }

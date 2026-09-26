@@ -1,11 +1,10 @@
 import SwiftUI
 
-/// The art direction for the cards.
+/// The art direction for the study screens.
 enum CardLook: String {
-  /// Paper and ink: warm off-white stock by day, warm ink on black in Dark Mode.
-  case paper
-  /// The reference video's system look. Debug builds only, with `-cardLook system`.
-  case system
+  case keynote
+  case glass
+  case card
 
   static var current: CardLook {
     #if DEBUG
@@ -13,13 +12,14 @@ enum CardLook: String {
       return look
     }
     #endif
-    return .paper
+    return .keynote
   }
 
   func style(for colorScheme: ColorScheme) -> CardStyle {
     switch self {
-    case .paper: colorScheme == .dark ? .ink : .paper
-    case .system: .system
+    case .keynote: .keynote
+    case .glass: .glass
+    case .card: .card
     }
   }
 }

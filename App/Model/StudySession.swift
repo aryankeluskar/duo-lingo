@@ -17,7 +17,7 @@ final class StudySession {
     var word: Word
   }
 
-  let deck: [Word]
+  private(set) var deck: Deck
   private(set) var queue: [Card] = []
   private(set) var phase = Phase.prompt
   private(set) var known: Set<String> = []
@@ -32,9 +32,9 @@ final class StudySession {
   private var knownDay: String
   private let defaults: UserDefaults
 
-  init(deck: [Word] = Word.japanese, defaults: UserDefaults = .standard) {
-    self.deck = deck
+  init(defaults: UserDefaults = .standard) {
     self.defaults = defaults
+    deck = defaults.string(forKey: Keys.deck).flatMap(Deck.init) ?? .spanish
     // Always today, so moving between displays (which reactivates the scene) never looks like a new day.
     knownDay = Self.today
     starred = Set(defaults.stringArray(forKey: Keys.starred) ?? [])
@@ -52,9 +52,10 @@ final class StudySession {
     #endif
   }
 
+  var words: [Word] { deck.words }
   var current: Card? { queue.first }
   var isRevealed: Bool { phase == .revealed }
-  var knownCount: Int { known.count }
+  var knownCount: Int { words.filter { known.contains($0.id) }.count }
 
   func isStarred(_ word: Word) -> Bool {
     starred.contains(word.id)
@@ -114,8 +115,17 @@ final class StudySession {
     }
   }
 
+  /// Switches to another language and starts from its first card not yet known today.
+  func selectDeck(_ newDeck: Deck) {
+    guard newDeck != deck else { return }
+    deck = newDeck
+    defaults.set(newDeck.rawValue, forKey: Keys.deck)
+    rebuildQueue()
+  }
+
+  /// Goes through the current deck again from the start.
   func startOver() {
-    known = []
+    known.subtract(words.map(\.id))
     saveKnown()
     rebuildQueue()
   }
@@ -123,11 +133,13 @@ final class StudySession {
   /// Starts a fresh day's count after midnight.
   func refreshDay() {
     guard knownDay != Self.today else { return }
-    startOver()
+    known = []
+    saveKnown()
+    rebuildQueue()
   }
 
   private func rebuildQueue() {
-    queue = deck.filter { !known.contains($0.id) }.map(makeCard)
+    queue = words.filter { !known.contains($0.id) }.map(makeCard)
     phase = .prompt
     isDealPending = false
   }
@@ -152,5 +164,6 @@ final class StudySession {
     static let known = "knownWords"
     static let knownDay = "knownDay"
     static let starred = "starredWords"
+    static let deck = "deck"
   }
 }

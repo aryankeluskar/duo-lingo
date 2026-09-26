@@ -9,7 +9,7 @@ struct StudyView: View {
   var body: some View {
     NavigationStack {
       VStack(spacing: 16) {
-        DailyProgressHeader(known: session.knownCount, total: session.deck.count)
+        DailyProgressHeader(known: session.knownCount, total: session.words.count)
         if let card = session.current {
           if horizontalSizeClass == .regular {
             SpreadView(card: card)
@@ -20,7 +20,7 @@ struct StudyView: View {
           DeckCompleteContent()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background {
-              PaperSurface()
+              Surface()
             }
             .transition(.blurReplace)
         }
@@ -28,7 +28,9 @@ struct StudyView: View {
       .padding(.horizontal, 16)
       .padding(.top, 6)
       .padding(.bottom, 16)
-      .background(style.canvas)
+      .background {
+        CanvasBackground(seed: session.current?.id ?? 0)
+      }
       .toolbar {
         ToolbarItem {
           Toggle(isOn: isCurrentStarred) {

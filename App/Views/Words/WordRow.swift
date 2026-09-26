@@ -13,15 +13,15 @@ struct WordRow: View {
       VStack(alignment: .leading, spacing: 3) {
         HStack(alignment: .firstTextBaseline, spacing: 8) {
           Text(word.spokenTerm)
-            .font(style.word.font(size: 22))
-            .typesettingLanguage(.init(identifier: "ja"))
-          Text(word.reading)
+            .font(.system(size: 22, weight: .semibold, design: style.wordDesign))
+            .typesettingLanguage(word.deck.language)
+          Text(word.spokenNote)
             .font(.subheadline)
             .foregroundStyle(.secondary)
-            .typesettingLanguage(.init(identifier: "ja"))
+            .typesettingLanguage(word.deck.language)
         }
         Text(word.meaning)
-          .font(style.meaning.font(size: 15).weight(.regular))
+          .font(.system(size: 15))
           .foregroundStyle(.secondary)
       }
       Spacer(minLength: 0)

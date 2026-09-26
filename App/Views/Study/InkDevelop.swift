@@ -20,13 +20,13 @@ struct InkDevelop: ViewModifier, Animatable {
     let amount = Self.amount(of: progress, line: line)
     content
       .opacity(restingOpacity + (1 - restingOpacity) * amount)
-      .blur(radius: 14 * (1 - amount))
+      .blur(radius: 10 * (1 - amount))
       .offset(y: reduceMotion ? 0 : 7 * (1 - amount))
   }
 
   /// Each line starts a little after the one above it and develops over half the answer's progress.
   private static func amount(of progress: Double, line: Int) -> Double {
-    let start = Double(line) * 0.14
+    let start = Double(line) * 0.12
     let t = min(max((progress - start) / 0.5, 0), 1)
     return t * t * (3 - 2 * t)
   }

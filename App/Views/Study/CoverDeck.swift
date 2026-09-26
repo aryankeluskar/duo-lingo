@@ -61,7 +61,7 @@ private struct CoverCard: View {
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
       .background {
-        PaperSurface()
+        Surface(isOpaque: true)
       }
       .contentShape(.rect(cornerRadius: style.cornerRadius, style: .continuous))
     }

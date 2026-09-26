@@ -4,30 +4,31 @@ import SwiftUI
 struct DeckCompleteContent: View {
   @Environment(StudySession.self) private var session
   @Environment(\.cardStyle) private var style
-  @ScaledMetric(relativeTo: .title) private var titleSize = 28
-  @ScaledMetric(relativeTo: .subheadline) private var bodySize = 16
+  @ScaledMetric(relativeTo: .largeTitle) private var titleSize = 34
+  @ScaledMetric(relativeTo: .body) private var bodySize = 17
 
   var body: some View {
-    VStack(spacing: 14) {
-      Image(systemName: "checkmark.seal.fill")
-        .font(.system(size: 44))
+    VStack(spacing: 12) {
+      Image(systemName: "checkmark.circle.fill")
+        .font(.system(size: 52))
         .foregroundStyle(style.accent)
         .symbolEffect(.bounce, value: session.knownCount)
+        .padding(.bottom, 4)
         .accessibilityHidden(true)
-      Text("You know all \(session.deck.count) words")
-        .font(style.meaning.font(size: titleSize))
+      Text("All \(session.words.count) words, done")
+        .font(.system(size: titleSize, weight: .bold))
         .foregroundStyle(style.ink)
       Text("Come back tomorrow, or go through the deck again.")
-        .font(style.translation.font(size: bodySize))
+        .font(.system(size: bodySize))
         .foregroundStyle(style.inkSecondary)
       Button("Study Again", systemImage: "arrow.counterclockwise") {
         withAnimation(.smooth) {
           session.startOver()
         }
       }
-      .buttonStyle(.bordered)
+      .buttonStyle(.glass)
       .controlSize(.large)
-      .padding(.top, 8)
+      .padding(.top, 12)
     }
     .multilineTextAlignment(.center)
     .padding(32)
