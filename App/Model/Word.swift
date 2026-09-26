@@ -4,7 +4,7 @@ struct Word: Identifiable, Hashable {
   var deck: Deck
   var term: String
   /// A short note beside the term: the reading for Japanese, the part of speech (and a noun's
-  /// gender) for Spanish.
+  /// gender) for Spanish, the field within the subject for a science or math deck.
   var note: String
   var meaning: String
   var example: String

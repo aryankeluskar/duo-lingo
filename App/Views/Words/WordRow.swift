@@ -11,20 +11,20 @@ struct WordRow: View {
     let isKnown = session.known.contains(word.id)
     HStack(spacing: 14) {
       VStack(alignment: .leading, spacing: 3) {
-        HStack(alignment: .firstTextBaseline, spacing: 8) {
-          Text(word.spokenTerm)
-            .font(.system(size: 22, weight: .semibold, design: style.wordDesign))
-            .typesettingLanguage(word.deck.language)
-          Text(word.spokenNote)
-            .font(style.noteDesign == .monospaced ? .system(size: 11, weight: .medium, design: .monospaced) : .subheadline)
-            .textCase(style.noteDesign == .monospaced ? .uppercase : nil)
-            .tracking(style.noteDesign == .monospaced ? 1.2 : 0)
-            .foregroundStyle(.secondary)
-            .typesettingLanguage(word.deck.language)
+        // The note sits beside the term, or under it when a concept's name leaves no room.
+        ViewThatFits(in: .horizontal) {
+          HStack(alignment: .firstTextBaseline, spacing: 8) {
+            term
+            note
+          }
+          VStack(alignment: .leading, spacing: 2) {
+            term
+            note
+          }
         }
         Text(word.meaning)
           .font(.system(size: 16, design: style.bodyDesign))
-          .foregroundStyle(.secondary)
+          .foregroundStyle(style.inkSecondary)
       }
       Spacer(minLength: 0)
       if isKnown {
@@ -53,5 +53,23 @@ struct WordRow: View {
       }
       .tint(style.accent)
     }
+  }
+
+  private var term: some View {
+    Text(word.spokenTerm)
+      .font(.system(size: 22, weight: .semibold, design: style.wordDesign))
+      .foregroundStyle(style.ink)
+      .typesettingLanguage(word.deck.language)
+      .fixedSize(horizontal: false, vertical: true)
+  }
+
+  private var note: some View {
+    Text(word.spokenNote)
+      .font(style.noteDesign == .monospaced ? .system(size: 11, weight: .medium, design: .monospaced) : .subheadline)
+      .textCase(style.noteDesign == .monospaced ? .uppercase : nil)
+      .tracking(style.noteDesign == .monospaced ? 1.6 : 0)
+      .foregroundStyle(style.noteInk ?? .secondary)
+      .typesettingLanguage(word.deck.language)
+      .lineLimit(1)
   }
 }
