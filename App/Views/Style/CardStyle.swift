@@ -24,7 +24,15 @@ struct CardStyle {
   var translation: Typeface
   var caption: Typeface
   var label: Typeface
+  /// The texture of the card stock. None for a smooth card.
+  var grain: Grain? = nil
   var cornerRadius: CGFloat = 28
+
+  /// Specks and fibers darker and lighter than the paper, each at a whisper of opacity.
+  struct Grain {
+    var shade: Color
+    var light: Color
+  }
 }
 
 extension CardStyle {
@@ -71,7 +79,8 @@ extension CardStyle {
     example: Typeface(name: "HiraMinProN-W3"),
     translation: Typeface(design: .serif, isItalic: true),
     caption: Typeface(design: .serif, usesSmallCaps: true),
-    label: Typeface(weight: .semibold, design: .serif, usesSmallCaps: true)
+    label: Typeface(weight: .semibold, design: .serif, usesSmallCaps: true),
+    grain: Grain(shade: Color(red: 0.30, green: 0.22, blue: 0.10).opacity(0.03), light: .white.opacity(0.4))
   )
 
   /// Ink on black: the paper look for Dark Mode, with warm white type. A faint warm edge,
@@ -95,7 +104,8 @@ extension CardStyle {
     example: Typeface(name: "HiraMinProN-W3"),
     translation: Typeface(design: .serif, isItalic: true),
     caption: Typeface(design: .serif, usesSmallCaps: true),
-    label: Typeface(weight: .semibold, design: .serif, usesSmallCaps: true)
+    label: Typeface(weight: .semibold, design: .serif, usesSmallCaps: true),
+    grain: Grain(shade: .black.opacity(0.2), light: Color(red: 1, green: 0.9, blue: 0.78).opacity(0.025))
   )
 }
 

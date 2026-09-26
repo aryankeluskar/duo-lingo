@@ -9,6 +9,12 @@ struct PaperSurface: View {
     shape
       .fill(style.paper)
       .overlay {
+        if let grain = style.grain {
+          PaperGrain(grain: grain)
+            .clipShape(shape)
+        }
+      }
+      .overlay {
         shape.strokeBorder(
           LinearGradient(colors: [style.paperEdgeHighlight, style.paperEdge], startPoint: .top, endPoint: .bottom),
           lineWidth: 0.75
