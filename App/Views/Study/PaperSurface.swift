@@ -9,7 +9,10 @@ struct PaperSurface: View {
     shape
       .fill(style.paper)
       .overlay {
-        shape.strokeBorder(style.paperEdge, lineWidth: 0.75)
+        shape.strokeBorder(
+          LinearGradient(colors: [style.paperEdgeHighlight, style.paperEdge], startPoint: .top, endPoint: .bottom),
+          lineWidth: 0.75
+        )
       }
       .shadow(color: style.shadow, radius: 20, y: 8)
   }

@@ -3,8 +3,12 @@ import SwiftUI
 struct ContentView: View {
   @Environment(StudySession.self) private var session
   @Environment(\.scenePhase) private var scenePhase
-  @AppStorage("cardLook") private var look = CardLook.system
+  @Environment(\.colorScheme) private var colorScheme
   @State private var selectedTab = AppTab.launchTab
+
+  private var style: CardStyle {
+    CardLook.current.style(for: colorScheme)
+  }
 
   var body: some View {
     TabView(selection: $selectedTab) {
@@ -15,9 +19,8 @@ struct ContentView: View {
         WordsView()
       }
     }
-    .environment(\.cardStyle, look.style)
-    .tint(look.style.accent)
-    .preferredColorScheme(look.colorScheme)
+    .environment(\.cardStyle, style)
+    .tint(style.accent)
     .modifier(
       HingeTracking { state in
         #if DEBUG

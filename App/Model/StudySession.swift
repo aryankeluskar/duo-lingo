@@ -35,9 +35,10 @@ final class StudySession {
   init(deck: [Word] = Word.japanese, defaults: UserDefaults = .standard) {
     self.deck = deck
     self.defaults = defaults
-    knownDay = defaults.string(forKey: Keys.knownDay) ?? ""
+    // Always today, so moving between displays (which reactivates the scene) never looks like a new day.
+    knownDay = Self.today
     starred = Set(defaults.stringArray(forKey: Keys.starred) ?? [])
-    if knownDay == Self.today {
+    if defaults.string(forKey: Keys.knownDay) == knownDay {
       known = Set(defaults.stringArray(forKey: Keys.known) ?? [])
     }
     rebuildQueue()

@@ -1,30 +1,25 @@
 import SwiftUI
 
 /// The art direction for the cards.
-enum CardLook: String, CaseIterable, Identifiable {
-  /// The reference video: system colors and SF Pro.
-  case system
-  /// Warm off-white paper, Hiragino Mincho and New York, a soft crease at the hinge.
+enum CardLook: String {
+  /// Paper and ink: warm off-white stock by day, warm ink on black in Dark Mode.
   case paper
-  /// Warm ink on black.
-  case ink
+  /// The reference video's system look. Debug builds only, with `-cardLook system`.
+  case system
 
-  var id: Self { self }
-
-  var style: CardStyle {
-    switch self {
-    case .system: .system
-    case .paper: .paper
-    case .ink: .ink
+  static var current: CardLook {
+    #if DEBUG
+    if let look = UserDefaults.standard.string(forKey: "cardLook").flatMap(CardLook.init) {
+      return look
     }
+    #endif
+    return .paper
   }
 
-  /// Paper and ink are printed looks with a fixed appearance; the system look follows Dark Mode.
-  var colorScheme: ColorScheme? {
+  func style(for colorScheme: ColorScheme) -> CardStyle {
     switch self {
-    case .system: nil
-    case .paper: .light
-    case .ink: .dark
+    case .paper: colorScheme == .dark ? .ink : .paper
+    case .system: .system
     }
   }
 }
