@@ -17,12 +17,15 @@ struct QuestionContent: View {
         .multilineTextAlignment(.center)
         .lineLimit(2)
         .minimumScaleFactor(0.5)
+        // Kanji sit about 0.08 em below the Latin baseline, kana a little less. Lining up the
+        // bottoms of the glyphs, not the baselines, makes the word and its meaning read as one line.
+        .alignmentGuide(.horizon) { $0[.lastTextBaseline] + wordSize * 0.07 }
       Text("Japanese")
         .font(style.caption.font(size: captionSize))
         .foregroundStyle(style.inkSecondary)
     }
     .padding(28)
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .frame(maxWidth: .infinity)
     .accessibilityElement(children: .combine)
   }
 }

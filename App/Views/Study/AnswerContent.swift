@@ -31,6 +31,7 @@ struct AnswerContent: View {
         .font(style.meaning.font(size: meaningSize))
         .foregroundStyle(style.ink)
         .fixedSize(horizontal: false, vertical: true)
+        .alignmentGuide(.horizon) { $0[.lastTextBaseline] }
         .inkDevelop(isDeveloped, line: 0, restingOpacity: restingOpacity)
       Rectangle()
         .fill(style.rule)

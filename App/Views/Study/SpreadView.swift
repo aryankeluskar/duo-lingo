@@ -16,11 +16,13 @@ struct SpreadView: View {
         PageSpreadLayout(spine: spine) {
           Spine(axis: spine.axis)
           if spine.axis == .horizontal {
-            answerPage
-            questionPage
+            // Side by side, both pages hang from one horizon line across the fold.
+            let alignment = Alignment(horizontal: .center, vertical: .horizon)
+            answerPage(alignment: alignment)
+            questionPage(alignment: alignment)
           } else {
-            questionPage
-            answerPage
+            questionPage(alignment: .center)
+            answerPage(alignment: .center)
           }
         }
       }
@@ -42,23 +44,23 @@ struct SpreadView: View {
 
   // Each page is a container, so the layout keeps exactly three children while one card
   // gives way to the next inside it.
-  private var answerPage: some View {
-    ZStack {
+  private func answerPage(alignment: Alignment) -> some View {
+    ZStack(alignment: alignment) {
       AnswerContent(word: card.word, isRevealed: session.isRevealed, restingOpacity: 0.12)
         .padding(.horizontal, 40)
         .id(card.id)
         .transition(.blurReplace)
     }
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
   }
 
-  private var questionPage: some View {
-    ZStack {
+  private func questionPage(alignment: Alignment) -> some View {
+    ZStack(alignment: alignment) {
       QuestionContent(word: card.word)
         .id(card.id)
         .transition(.blurReplace)
     }
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
   }
 
   /// Tapping reveals a veiled answer. With no hinge to fold, a second tap moves on.
