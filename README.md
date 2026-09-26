@@ -2,9 +2,13 @@
 
 **Flashcards for iPhone Duo. The question is on the cover; unfold to reveal the answer.**
 
-![chain rule on the cover, and its answer inside](screenshots/1-chain-rule.jpg)
+<img width="517" height="712" alt="Screenshot 2026-09-26 at 3 26 03 PM" src="https://github.com/user-attachments/assets/ea80e298-143e-42ba-a1f3-e9f785aa078c" />
+<img width="746" height="712" alt="Screenshot 2026-09-26 at 3 26 07 PM" src="https://github.com/user-attachments/assets/d1c8583a-c15f-4f1c-96f9-63b4e27062bc" />
+<img width="1010" height="721" alt="Screenshot 2026-09-26 at 3 26 12 PM" src="https://github.com/user-attachments/assets/d3bb5c75-c2db-488d-af59-16a7bbd972f2" />
 
-Built solo at **Bitrig Hacks: iPhone Duo Edition** (YC, September 2026), in about four hours, with [Bitrig](https://bitrig.app).
+
+
+Built at **Bitrig Hacks: iPhone Duo Edition** (YC, September 2026), in about four hours, with [Bitrig](https://bitrig.app).
 
 ## What it does
 
