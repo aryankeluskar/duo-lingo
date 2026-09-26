@@ -33,7 +33,7 @@ struct SpreadView: View {
     }
     .buttonStyle(CardPressStyle())
     .keyboardShortcut(.space, modifiers: [])
-    .accessibilityHint(session.isRevealed ? "" : "Reveals the answer")
+    .accessibilityHint(session.isRevealed ? "Shows the next card" : "Reveals the answer")
     .accessibilityAction(named: "Next Card") {
       withAnimation(.smooth(duration: 0.5)) {
         session.advance()
@@ -53,15 +53,21 @@ struct SpreadView: View {
         .padding(.horizontal, 52)
         .id(card.id)
         .transition(.blurReplace)
-      Text("Fold, recall, unfold.")
-        .font(.system(size: 19, design: style.bodyDesign))
-        .italic(style.bodyDesign == .serif)
-        .foregroundStyle(style.inkTertiary)
-        .alignmentGuide(.horizon) { $0[.lastTextBaseline] }
-        .opacity(session.isRevealed ? 0 : 1)
-        .blur(radius: session.isRevealed ? 6 : 0)
-        .animation(.smooth(duration: 0.3), value: session.isRevealed)
-        .accessibilityHidden(true)
+      VStack(spacing: 22) {
+        if style.surface == .paper {
+          RisoCrane()
+            .frame(width: 180, height: 126)
+        }
+        Text("Fold, recall, unfold.")
+          .font(.system(size: 19, design: style.bodyDesign))
+          .italic(style.bodyDesign == .serif)
+          .foregroundStyle(style.inkTertiary)
+      }
+      .alignmentGuide(.horizon) { $0[.lastTextBaseline] }
+      .opacity(session.isRevealed ? 0 : 1)
+      .blur(radius: session.isRevealed ? 6 : 0)
+      .animation(.smooth(duration: 0.3), value: session.isRevealed)
+      .accessibilityHidden(true)
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
   }
@@ -75,11 +81,12 @@ struct SpreadView: View {
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
   }
 
-  /// Tapping reveals a veiled answer. With no hinge to fold, a second tap moves on.
+  /// Tapping reveals a veiled answer, and a second tap moves on. Folding does the same on
+  /// iPhone Duo, but a book lying open on a table still needs a way to turn the page.
   private func tap() {
     if !session.isRevealed {
       session.reveal()
-    } else if !session.fold.hasHinge {
+    } else {
       withAnimation(.smooth(duration: 0.5)) {
         session.advance()
       }
