@@ -46,6 +46,9 @@ final class StudySession {
     if defaults.bool(forKey: "revealOnLaunch") {
       reveal()
     }
+    if let pose = FoldState.debugPose {
+      fold = pose
+    }
     #endif
   }
 
@@ -95,6 +98,9 @@ final class StudySession {
 
   /// Reveals on unfold and puts the card away on fold, but only while the deck is on screen.
   func updateFold(_ state: FoldState, isStudying: Bool) {
+    #if DEBUG
+    if FoldState.debugPose != nil { return }
+    #endif
     let previous = fold.posture
     fold = state
     guard isStudying, let posture = state.posture, let previous, posture != previous else { return }
