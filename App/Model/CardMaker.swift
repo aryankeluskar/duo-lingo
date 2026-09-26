@@ -68,22 +68,35 @@ enum CardMaker {
   // MARK: - Writing the cards
 
   private static let instructions = """
-    You make flashcards for active recall from one web page. The front of each card is shown \
-    on a small cover display; the reader says the answer out loud, then unfolds the phone to \
-    check it. Pick the 12 to 16 ideas on the page most worth remembering, most important first.
+    You write flashcards that test what someone just read. Each card is one short question \
+    and its short answer: a fact worth memorizing from the page. The question is shown on a \
+    small cover display; the reader answers out loud, then unfolds the phone to check.
 
-    If the page teaches a language, make vocabulary cards: term is the word in that language, \
-    note is its part of speech, meaning is the English, example is a short sentence in that \
-    language, exampleTranslation is its English, and language is that language's BCP 47 code.
+    Write 10 to 15 cards, most important first. Test specific, checkable facts: numbers, \
+    names, dates, definitions, claims, causes, steps, comparisons. One fact per card. Every \
+    answer must be stated on the page. No duplicates, no vague themes, no opinions. Good \
+    cards look like "What year did Abbott publish on recall?" → "1909", or "How long can \
+    you do hard work per day, per Graham?" → "About 4 hours".
 
-    Otherwise, language is "en" and:
-    - term: the cue, a name, term, or concept, at most 32 characters. Never a question.
-    - note: the field or section it comes from, 1 to 3 lowercase words.
-    - meaning: the answer, at most 60 characters, crisp and specific, no trailing period.
-    - example: one concrete sentence from the page that uses or illustrates it, at most 110 characters.
-    - exampleTranslation: one sentence on why it matters or how to tell it apart from a near miss, at most 110 characters.
+    - term: the question, at most 60 characters, ending with "?". A stranger who never saw \
+      the page must know exactly what is asked, so always name the subject. Write "Who ran \
+      the first testing effect study?", not "Who published the first studies?". Never say \
+      "the author", "this article", "it" or "they".
+    - meaning: the answer, 1 to 6 words, at most 40 characters. A fact, not a sentence. No \
+      trailing period.
+    - note: the topic, 1 or 2 lowercase words.
+    - example: one sentence from the page, lightly trimmed, that states the answer, at most \
+      100 characters.
+    - exampleTranslation: a short hook that makes it stick (a contrast, a cause, or a \
+      mnemonic), at most 80 characters.
+    - language: "en".
 
-    Every card must be true to the page. No duplicates. title is a short deck name, at most 22 characters.
+    Exception: if the page teaches a language's vocabulary, make vocabulary cards instead. \
+    term is the word in that language (no question mark), note its part of speech, meaning \
+    the English, example a short sentence in that language, exampleTranslation its English, \
+    and language that language's BCP 47 code.
+
+    title is a short deck name, at most 22 characters.
     """
 
   private static let schema: [String: Any] = [

@@ -9,15 +9,19 @@ struct QuestionContent: View {
   @ScaledMetric(relativeTo: .largeTitle) private var wordSize = 76
   @ScaledMetric(relativeTo: .body) private var noteSize = 17
 
+  /// A card made from a link asks a whole question, set smaller so it fits the cover.
+  private var isQuestion: Bool { word.term.hasSuffix("?") }
+  private var termSize: CGFloat { isQuestion ? wordSize * 0.56 : wordSize }
+
   var body: some View {
     VStack(spacing: 12) {
       Text(word.spokenTerm)
-        .font(.system(size: wordSize, weight: style.wordWeight, design: style.wordDesign))
-        .tracking(-wordSize * 0.012)
+        .font(.system(size: termSize, weight: style.wordWeight, design: style.wordDesign))
+        .tracking(-termSize * 0.012)
         .foregroundStyle(style.ink)
         .typesettingLanguage(word.deck.language)
         .multilineTextAlignment(.center)
-        .lineLimit(word.deck.hasLongTerms ? 2 : 1)
+        .lineLimit(isQuestion ? 4 : word.deck.hasLongTerms ? 2 : 1)
         .minimumScaleFactor(0.5)
         // Kanji sit about 0.08 em below the Latin baseline, so for Japanese line up the bottoms
         // of the glyphs, not the baselines, to read as one line with the meaning.
