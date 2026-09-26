@@ -56,7 +56,7 @@ struct SpreadView: View {
       Text("Fold, recall, unfold.")
         .font(.system(size: 17, weight: .medium))
         .foregroundStyle(style.inkTertiary)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .alignmentGuide(.horizon) { $0[.lastTextBaseline] }
         .opacity(session.isRevealed ? 0 : 1)
         .blur(radius: session.isRevealed ? 6 : 0)
         .animation(.smooth(duration: 0.3), value: session.isRevealed)

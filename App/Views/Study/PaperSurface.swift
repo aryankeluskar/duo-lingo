@@ -19,8 +19,22 @@ struct Surface: View {
         .shadow(color: .black.opacity(0.07), radius: 28, y: 14)
     case .glass:
       Color.clear
-        .glassEffect(.regular, in: shape)
+        .glassEffect(Self.glass, in: shape)
     }
+  }
+}
+
+extension Surface {
+  static var glass: Glass {
+    #if DEBUG
+    switch UserDefaults.standard.string(forKey: "glassKind") {
+    case "clear": return .clear
+    case "regular": return .regular
+    case "milk": return .regular.tint(.white.opacity(0.55))
+    default: break
+    }
+    #endif
+    return .regular.tint(.white.opacity(0.35))
   }
 }
 

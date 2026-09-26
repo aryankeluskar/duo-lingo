@@ -8,6 +8,7 @@ struct AppDefinition: App {
     WindowGroup {
       ContentView()
         .environment(session)
+        .preferredColorScheme(.light)
     }
   }
 }

@@ -12,7 +12,7 @@ enum CardLook: String {
       return look
     }
     #endif
-    return .keynote
+    return .glass
   }
 
   func style(for colorScheme: ColorScheme) -> CardStyle {
